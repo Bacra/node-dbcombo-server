@@ -12,10 +12,10 @@ function handle(options)
 	options || (options = {});
 	if (!options.root) options.root = process.cwd()+'/';
 
-	var multiParser	= new urlCombo.MultiFiles(options);
-	var dbParser	= new urlCombo.DBFiles(options);
-	var checker		= new Checker(options);
-	var dbFile		= new DBFile(options);
+	var multiParser	= options.multiParser || new urlCombo.MultiFiles(options);
+	var dbParser	= options.dbParser || new urlCombo.DBFiles(options);
+	var checker		= options.checker || new Checker(options);
+	var dbFile		= options.dbFile || new DBFile(options);
 
 
 	function paseMulti(url)
