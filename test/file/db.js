@@ -1,0 +1,1 @@
+module.exports = ['file/0.js', 'file/1.js', 'file/2.js', 'file/3.js', 'file/4.js', 'file/5.js', 'file/6.js'];
