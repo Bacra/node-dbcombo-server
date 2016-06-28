@@ -1,7 +1,7 @@
 {
-  "name": "combo",
+  "name": "dbcombo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Combo staitc resource width db info.",
   "main": "express.js",
   "scripts": {
     "test": "node_modules/.bin/mocha test/test_*.js"
