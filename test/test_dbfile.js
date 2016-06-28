@@ -16,7 +16,7 @@ describe('dbfile', function()
 	it('overflow#10000000111', function()
 	{
 		var db = new DBFile();
-		return db.handle(__dirname+'/data/db.js', parseInt('10000000111', 2).toString(32))
+		return db.handle(__dirname, '/data/db.js', parseInt('10000000111', 2).toString(32))
 			.then(function()
 			{
 				assert(false);
@@ -27,7 +27,7 @@ describe('dbfile', function()
 	it('errfilelist', function()
 	{
 		var db = new DBFile();
-		return db.handle(__dirname+'/data/db.js', '&^%')
+		return db.handle(__dirname, '/data/db.js', '&^%')
 			.then(function()
 			{
 				assert(0);
@@ -42,12 +42,12 @@ function doAssert(use, list)
 	it('use#'+use, function()
 	{
 		var db = new DBFile();
-		return db.handle(__dirname+'/data/db.js', parseInt(use, 2).toString(32))
+		return db.handle(__dirname, '/data/db.js', parseInt(use, 2).toString(32))
 			.then(function(files)
 			{
 				files.forEach(function(file, index)
 				{
-					assert.equal(file, list[index]);
+					assert.equal(file, '/data/'+list[index]);
 				});
 			});
 	});

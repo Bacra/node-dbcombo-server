@@ -39,7 +39,7 @@ function handle(options)
 			.then(function(fileinfo)
 			{
 				debug('db fileinfo: %o', fileinfo);
-				return dbFile.handle(options.root+'/'+fileinfo.db, fileinfo.list);
+				return dbFile.handle(options.root, fileinfo.db, fileinfo.list);
 			})
 			.catch(function(err)
 			{
