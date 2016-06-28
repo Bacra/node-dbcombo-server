@@ -50,6 +50,8 @@ function handle(options)
 
 	return function(req, res, next)
 	{
+		if (req.method && req.method != 'GET') return next();
+
 		var url = req.url;
 		debug('start url:%s', url);
 		var startTime = Date.now();
@@ -81,6 +83,7 @@ function handle(options)
 								ws.on('error', reject)
 									.once('check', function(data)
 									{
+										// @todo 增加缓存头部
 										debug('combo check:%dms', Date.now() - comboStartTime);
 									})
 									.once('end', function()
