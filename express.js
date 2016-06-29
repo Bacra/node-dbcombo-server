@@ -1,3 +1,5 @@
+var etag		= require('etag');
+var mime		= require('mime');
 var Checker		= require('./lib/check_paths').Checker;
 var combo		= require('./lib/combo');
 var urlCombo	= require('./lib/url_combo_parser');
@@ -16,6 +18,8 @@ function handle(options)
 	var dbParser	= options.dbParser || new urlCombo.DBFiles(options);
 	var checker		= options.checker || new Checker(options);
 	var dbFile		= options.dbFile || new DBFile(options);
+
+	options.maxage = Math.floor(Math.max(0, Number(options.maxage) || 3600*365));
 
 
 	function paseMulti(url)
@@ -79,11 +83,12 @@ function handle(options)
 								var comboStartTime = Date.now();
 								var ws = combo.createComboStream(files, options);
 
+								debug('combo start:%s', url);
 								ws.pipe(res);
-								ws.on('error', reject)
-									.once('check', function(data)
+								ws.once('error', reject)
+									.once('check', function(stats)
 									{
-										// @todo 增加缓存头部
+										setResHeader(req, res, stats, options);
 										debug('combo check:%dms', Date.now() - comboStartTime);
 									})
 									.once('end', function()
@@ -107,5 +112,55 @@ function handle(options)
 }
 
 
+
+
+function setResHeader(req, res, stats, options)
+{
+	if (res._header)
+	{
+		debug('headers already sent');
+	}
+	else
+	{
+		if (!res.getHeader('Content-Length'))
+		{
+			var contentLength = 0;
+			stats.stats.forEach(function(stat)
+			{
+				contentLength += stat.size;
+			});
+
+			debug('content len:%d', contentLength);
+			res.setHeader('Content-Length', contentLength);
+		}
+
+		if (!res.getHeader('Content-Type'))
+		{
+			var type = mime.lookup(req.url);
+			var charset = mime.charsets.lookup(type);
+			debug('content-type %s', type);
+			res.setHeader('Content-Type', type + (charset ? '; charset=' + charset : ''));
+		}
+
+		if (!res.getHeader('Cache-Control'))
+		{
+			res.setHeader('Cache-Control', 'public, max-age=' + options.maxage);
+		}
+
+
+		var lastStat = stats.lastMtime();
+		debug('lastStat mtime:%s', lastStat.mime);
+
+		if (!res.getHeader('Last-Modified'))
+		{
+			res.setHeader('Last-Modified', lastStat.mtime.toUTCString());
+		}
+
+		if (!res.getHeader('ETag'))
+		{
+			res.setHeader('ETag', etag(lastStat));
+		}
+	}
+}
 
 

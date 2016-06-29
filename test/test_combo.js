@@ -12,9 +12,9 @@ describe('combo', function()
 	{
 		var index = 0;
 		new combo.Combo(fileArr, {fileCache: fileCache, fileStatCache: fileStatCache, root: root})
-			.on('check', function(data)
+			.on('check', function(stats)
 			{
-				assert(data && data.mtimes);
+				assert(stats && stats.stats);
 			})
 			.on('read', function(file, buf)
 			{
@@ -33,9 +33,9 @@ describe('combo', function()
 	{
 		var bufarr = [];
 		combo.createComboStream(fileArr, {fileCache: fileCache2, fileStatCache: fileStatCache2, root: root})
-			.on('check', function(data)
+			.on('check', function(stats)
 			{
-				assert(data && data.mtimes);
+				assert(stats && stats.stats);
 			})
 			.on('data', function(buf)
 			{
