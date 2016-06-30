@@ -4,7 +4,7 @@ var Checker		= require('./lib/check_paths').Checker;
 var combo		= require('./lib/combo');
 var urlCombo	= require('./lib/url_combo_parser');
 var DBFile		= require('./lib/dbfile').DBFile;
-var debug		= require('debug')('combo:express');
+var debug		= require('debug')('dbcombo:express');
 
 
 module.exports = handle;

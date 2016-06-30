@@ -4,7 +4,7 @@ var combo = require('../lib/combo');
 var fileArr = new Array(10).join().split(',').map(function(v, i){return i+'.js'});
 var root = __dirname+'/file/';
 
-describe('combo', function()
+describe('dbcombo', function()
 {
 	var fileCache = new LRU();
 	var fileStatCache = new LRU();

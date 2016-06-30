@@ -1,4 +1,4 @@
-require('debug').enable('combo*');
+require('debug').enable('dbcombo*');
 
 var expr = require('express');
 var app = expr();
