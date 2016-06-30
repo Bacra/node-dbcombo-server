@@ -5,13 +5,13 @@ var DBFile = require('../lib/dbfile').DBFile;
 
 describe('dbfile', function()
 {
-	doAssert('1', [9]);
-	doAssert('11', [8, 9]);
-	doAssert('101', [7, 9]);
-	doAssert('00101', [7, 9]);
-	doAssert('1000000011', [0, 8, 9]);
+	doAssert('1', [0]);
+	doAssert('11', [0, 1]);
+	doAssert('101', [0, 2]);
+	doAssert('00101', [0, 2]);
+	doAssert('1000000011', [0, 1, 9]);
 	// doAssert('10000000111', [0, 8, 9]);
-	doAssert('00000001111', [6, 7, 8, 9]);
+	doAssert('00000001111', [0, 1, 2, 3]);
 
 	it('overflow#10000000111', function()
 	{

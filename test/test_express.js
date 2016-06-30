@@ -35,7 +35,7 @@ describe('expressHandler', function()
 	});
 
 	var list = {
-		'file/db.js/3.js': '56',
+		'file/db.js/3.js': '01',
 		'file/db.js/12.js': '15',
 		'file/??1.js,2.js,3.js': '123'
 	};
