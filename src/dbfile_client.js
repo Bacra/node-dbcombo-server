@@ -1,5 +1,5 @@
 var EACH_GROUP_FILE_NUM = exports.EACH_GROUP_FILE_NUM = 31;
-var MAX_GROUP_KEY_LENGTH = exports.MAX_GROUP_KEY_LENGTH = Math.pow(2, 31).toString(32).length;
+var MAX_GROUP_KEY_LENGTH = exports.MAX_GROUP_KEY_LENGTH = Math.pow(2, EACH_GROUP_FILE_NUM).toString(32).length;
 
 var OFFSET2INDEX = (function()
 	{
