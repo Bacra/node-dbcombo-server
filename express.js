@@ -122,17 +122,12 @@ function setResHeader(req, res, stats, options)
 	}
 	else
 	{
-		if (!res.getHeader('Content-Length'))
-		{
-			var contentLength = 0;
-			stats.stats.forEach(function(stat)
-			{
-				contentLength += stat.size;
-			});
-
-			debug('content len:%d', contentLength);
-			res.setHeader('Content-Length', contentLength);
-		}
+		// if (!res.getHeader('Content-Length'))
+		// {
+		// 	var contentLength = stats.size(options.separator || options.separator.length);
+		// 	debug('content len:%d', contentLength);
+		// 	res.setHeader('Content-Length', contentLength);
+		// }
 
 		if (!res.getHeader('Content-Type'))
 		{
