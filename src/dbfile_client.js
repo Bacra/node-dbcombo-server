@@ -1,5 +1,8 @@
 var EACH_GROUP_FILE_NUM = exports.EACH_GROUP_FILE_NUM = 31;
 var MAX_GROUP_KEY_LENGTH = exports.MAX_GROUP_KEY_LENGTH = Math.pow(2, EACH_GROUP_FILE_NUM).toString(32).length;
+// 受到文件夹长度限制
+// http://stackoverflow.com/questions/14500893/is-the-255-char-limit-for-filenames-on-windows-and-unix-the-whole-path-or-part
+var MAX_GROUP_URI = exports.MAX_GROUP_URI = 250/MAX_GROUP_KEY_LENGTH | 0;
 
 var OFFSET2INDEX = (function()
 	{
@@ -42,6 +45,8 @@ function key(indexs)
 		}
 		else
 			str += 'Z';
+
+		if (i && !(i%MAX_GROUP_URI)) str += '/';
 	}
 
 	// console.log('groups len:%d, %o, url:%s', groups.length, groups, str);
