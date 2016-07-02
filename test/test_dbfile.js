@@ -44,6 +44,7 @@ describe('dbfile', function()
 		assert.equal(ClientKey.key([0]), 'Y1');
 		assert.equal(ClientKey.key([0, 30]), '1000001');
 		assert.equal(ClientKey.key([0, 31]), 'Y1Y1');
+		assert.equal(ClientKey.key([1000]), 'Y8032X');
 	});
 	doAssert3([0]);
 	doAssert3([0, 31]);

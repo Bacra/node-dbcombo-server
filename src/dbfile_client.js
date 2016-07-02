@@ -20,6 +20,11 @@ var OFFSET2INDEX = (function()
 
 
 exports.key = key;
+// 除了32位的字符，转换后有如下特殊字符
+// Z  分组无任何数据，占位使用
+// Y  分组转成字符串之后，长度不足MAX_GROUP_KEY_LENGTH，补位
+// /  数据可能超过文件名长度限制，用来分割
+// X  当有很多Z的时候，为了美化，进行repeat处理
 function key(indexs)
 {
 	var groups = [];
@@ -35,19 +40,44 @@ function key(indexs)
 	}
 
 	var str = '';
+	var continuousEmptyGroups = 0;
+
+	function ZXHandler()
+	{
+		if (continuousEmptyGroups)
+		{
+			if (continuousEmptyGroups == 1)
+				str += 'Z';
+			else if (continuousEmptyGroups == 2)
+				str += 'ZZ';
+			else
+				str += continuousEmptyGroups+'X';
+
+			continuousEmptyGroups = 0;
+		}
+	}
 	for(var i = groups.length; i--;)
 	{
 		if (groups[i])
 		{
+			ZXHandler();
 			var tmp = groups[i].toString(32);
 			if (tmp.length < 7) tmp = 'Y'+tmp;
 			str += tmp;
 		}
 		else
-			str += 'Z';
+		{
+			continuousEmptyGroups++;
+		}
 
-		if (i && !(i%MAX_GROUP_URI)) str += '/';
+		if (i && !(i%MAX_GROUP_URI))
+		{
+			ZXHandler();
+			str += '/';
+		}
 	}
+
+	ZXHandler();
 
 	// console.log('groups len:%d, %o, url:%s', groups.length, groups, str);
 
