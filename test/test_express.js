@@ -4,7 +4,7 @@ var expr	= require('express');
 var http = require('http');
 var debug	= require('debug')('dbcombo:test_express');
 var request	= require('request');
-var PORT	= 349;
+var PORT	= 4495;
 var HOST	= 'http://127.0.0.1:'+PORT+'/static/';
 
 describe('expressHandler', function()
