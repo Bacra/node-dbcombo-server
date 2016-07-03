@@ -78,6 +78,12 @@ function handle(options)
 					})
 					.then(function()
 					{
+						if (req.query.debug == 'list')
+						{
+							res.json(files);
+							return;
+						}
+
 						return new Promise(function(resolve, reject)
 							{
 								var comboStartTime = Date.now();
