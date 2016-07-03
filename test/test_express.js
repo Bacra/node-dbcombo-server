@@ -74,6 +74,8 @@ describe('expressHandler', function()
 
 
 	var list2 = {
+		'file/db.js': 404,
+		'file/1.js': 404,
 		'file/db.js/404.js': 404,
 		'data/db.js/404.js': 500,
 		'file/??404.js': 500,
