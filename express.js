@@ -30,7 +30,8 @@ function handle(options)
 			})
 			.catch(function(err)
 			{
-				debug('MultiFiles parse err:%o', err);
+				err.error = true;
+				return err;
 			});
 	}
 
@@ -47,7 +48,8 @@ function handle(options)
 			})
 			.catch(function(err)
 			{
-				debug('db parse err:%o, %s', err, err.stack);
+				err.error = true;
+				return err;
 			});
 	}
 
@@ -67,8 +69,16 @@ function handle(options)
 			])
 			.then(function(data)
 			{
-				var files = data[0] || data[1];
-				if (!files) return next();
+				var dbfiles = data[0];
+				var multifiles = data[1];
+				if ((!dbfiles || dbfiles.error) && (!multifiles || multifiles.error))
+				{
+					debug('db parse:%o, multifiles parse:%o', dbfiles, multifiles);
+					return next();
+				}
+
+				var files = !dbfiles || dbfiles.error ? multifiles : dbfiles;
+				if (!files && !files.length) return next();
 
 				return new Promise(function(resolve)
 					{
