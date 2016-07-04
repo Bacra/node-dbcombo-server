@@ -16,7 +16,8 @@ describe('dbfile', function()
 	assertParse1('1ZZ1', [1, , 1]);
 	assertParse1('1Y1', [1,1]);
 	assertParse1('1YY1', [1, , 1]);
-	assertParse1('1W4X1', [1, , , , , 1]);
+	assertParse1('1W4X1', [1, , , , 1]);
+	assertParse1('1W4XY1', [1, , , , , 1]);
 	assertParse1('W4X1', [1]);
 
 	assertParse2('4X1', '4X');
