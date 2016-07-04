@@ -171,11 +171,14 @@ function paths2hash(paths) {
   for (var i = 0, len = paths.length; i < len; i++) {
     var path = paths[i]
     var root = path[0] + "/"
-    var group = files2group(path[1])
 
-    for (var j = 0, m = group.length; j < m; j++) {
-      setHash(root, group[j])
-    }
+    // 考虑到benchmark 注释掉分组逻辑
+    // var group = files2group(path[1])
+
+    // for (var j = 0, m = group.length; j < m; j++) {
+    //   setHash(root, group[j])
+    // }
+    setHash(root, path[1]);
   }
 
   return comboHash
@@ -228,28 +231,28 @@ function splitFiles(files, filesMaxLength) {
 //  [ ["a.js", "c/d.js", "c/e.js"], ["a.css", "b.css"] ]
 //
 
-function files2group(files) {
-  var group = []
-  var hash = {}
+// function files2group(files) {
+//   var group = []
+//   var hash = {}
 
-  for (var i = 0, len = files.length; i < len; i++) {
-    var file = files[i]
-    var ext = getExt(file)
-    if (ext) {
-      (hash[ext] || (hash[ext] = [])).push(file)
-    }
-  }
+//   for (var i = 0, len = files.length; i < len; i++) {
+//     var file = files[i]
+//     var ext = getExt(file)
+//     if (ext) {
+//       (hash[ext] || (hash[ext] = [])).push(file)
+//     }
+//   }
 
-  for (var k in hash) {
-    if (hash.hasOwnProperty(k)) {
-      group.push(hash[k])
-    }
-  }
+//   for (var k in hash) {
+//     if (hash.hasOwnProperty(k)) {
+//       group.push(hash[k])
+//     }
+//   }
 
-  return group
-}
+//   return group
+// }
 
-function getExt(file) {
-  var p = file.lastIndexOf(".")
-  return p >= 0 ? file.substring(p) : ""
-}
+// function getExt(file) {
+//   var p = file.lastIndexOf(".")
+//   return p >= 0 ? file.substring(p) : ""
+// }
