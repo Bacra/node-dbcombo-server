@@ -25,7 +25,7 @@ var MARK_Z_GROUPS = (function()
 	{
 		var arr = [];
 		var str = '';
-		for(var i = 1; i < MAX_GROUP_KEY_LENGTH; i++)
+		for(var i = 1; i < MAX_NOT_REPEAT_GROUP_MARK; i++)
 		{
 			arr[i] = (str += 'Z');
 		}
@@ -35,6 +35,8 @@ var MARK_Z_GROUPS = (function()
 
 
 exports.key = key;
+
+// 生成urlkey，高位→低位
 // 除了32位的字符，转换后有如下特殊字符
 // Z  分组无任何数据，占位使用
 // Y  分组转成字符串之后，长度不足MAX_GROUP_KEY_LENGTH，补位
