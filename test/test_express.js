@@ -2,6 +2,7 @@ var assert	= require('assert');
 var handler	= require('../express');
 var expr	= require('express');
 var http	= require('http');
+var path	= require('path');
 var debug	= require('debug')('dbcombo:test_express');
 var request	= require('request');
 var PORT	= 4495;
@@ -37,17 +38,17 @@ describe('expressHandler', function()
 		'file/db.js/3.js':
 			{
 				content: '0',
-				list: ['/file/0.js']
+				list: [path.sep+'file/0.js']
 			},
 		'file/db.js/3.js':
 			{
 				content: '01',
-				list: ['/file/0.js', '/file/1.js']
+				list: [path.sep+'file/0.js', path.sep+'file/1.js']
 			},
 		'file/db.js/12.js':
 			{
 				content: '15',
-				list: ['/file/1.js', '/file/5.js']
+				list: [path.sep+'file/1.js', path.sep+'file/5.js']
 			},
 		'file/??1.js,2.js,3.js':
 			{
