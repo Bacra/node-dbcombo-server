@@ -71,19 +71,31 @@ function handle(options)
 			{
 				var dbfiles = data[0];
 				var multifiles = data[1];
+				var files;
 				if ((!dbfiles || dbfiles.error) && (!multifiles || multifiles.error))
 				{
 					debug('db parse:%o, multifiles parse:%o', dbfiles, multifiles);
 					return next();
 				}
 
-				var files = !dbfiles || dbfiles.error ? multifiles : dbfiles;
+				if (!dbfiles || dbfiles.error)
+				{
+					files = multifiles;
+					req.__combo_type__ = 'multifiles';
+				}
+				else
+				{
+					files = dbfiles;
+					req.__combo_type__ = 'dbfiles';
+				}
+
 				if (!files && !files.length) return next();
 
 				return new Promise(function(resolve)
 					{
 						debug('check files:%o', files);
 						checker.check(files);
+						req.__combo_files__ = files;
 						resolve();
 					})
 					.then(function()
