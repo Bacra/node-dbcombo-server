@@ -2,11 +2,11 @@ var assert	= require('assert');
 var handler	= require('../express');
 var expr	= require('express');
 var http	= require('http');
-var path	= require('path');
 var debug	= require('debug')('dbcombo:test_express');
 var request	= require('request');
 var PORT	= 4495;
 var HOST	= 'http://127.0.0.1:'+PORT+'/static/';
+var toLinuxPath = require('../lib/utils').toLinuxPath;
 
 describe('expressHandler', function()
 {
@@ -38,17 +38,17 @@ describe('expressHandler', function()
 		'file/db.js/3.js':
 			{
 				content: '0',
-				list: [path.sep+'file/0.js']
+				list: ['/file/0.js']
 			},
 		'file/db.js/3.js':
 			{
 				content: '01',
-				list: [path.sep+'file/0.js', path.sep+'file/1.js']
+				list: ['/file/0.js', '/file/1.js']
 			},
 		'file/db.js/12.js':
 			{
 				content: '15',
-				list: [path.sep+'file/1.js', path.sep+'file/5.js']
+				list: ['/file/1.js', '/file/5.js']
 			},
 		'file/??1.js,2.js,3.js':
 			{
@@ -123,7 +123,11 @@ function assertRequestList(uri, list)
 				{
 					if (err) return reject(err);
 					if (response.statusCode != 200) return reject('not 200,'+response.statusCode);
-					assert.deepEqual(JSON.parse(body), list);
+					assert.deepEqual(JSON.parse(body).map(function(file)
+						{
+							return toLinuxPath(file);
+						}),
+						list);
 					resolve();
 				});
 			});

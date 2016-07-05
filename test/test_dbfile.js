@@ -3,6 +3,7 @@
 var assert = require('assert');
 var DBFile = require('../lib/dbfile').DBFile;
 var ClientKey = require('../src/dbfile_client');
+var toLinuxPath = require('../lib/utils').toLinuxPath;
 
 describe('dbfile', function()
 {
@@ -157,7 +158,7 @@ function assertHandler1(use, list)
 			{
 				files.forEach(function(file, index)
 				{
-					assert.equal(file, '/data/'+list[index]);
+					assert.equal(toLinuxPath(file), '/data/'+list[index]);
 				});
 			});
 	});
@@ -173,7 +174,7 @@ function assertHandler2(use, list)
 			{
 				files.forEach(function(file, index)
 				{
-					assert.equal(file, '/data/'+list[index]);
+					assert.equal(toLinuxPath(file), '/data/'+list[index]);
 				});
 			});
 	});
@@ -189,7 +190,7 @@ function assertClientKey(use)
 			{
 				files.forEach(function(file, index)
 				{
-					assert.equal(file, '/data/'+use[index]);
+					assert.equal(toLinuxPath(file), '/data/'+use[index]);
 				});
 			});
 	});
