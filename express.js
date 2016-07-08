@@ -62,6 +62,14 @@ function handle(options)
 		debug('start url:%s', url);
 		var startTime = Date.now();
 
+		// 使用路径进行debug参数设置，防止cdn回源的时候，被缓存
+		var isOnlyDisplayList = false;
+		if (url.substr(-11) == '/debug_list')
+		{
+			isOnlyDisplayList = true;
+			url = url.substr(0, url.length-11);
+		}
+
 		return Promise.all(
 			[
 				options.enabledDBParser && paseDB(url),
@@ -100,7 +108,7 @@ function handle(options)
 					})
 					.then(function()
 					{
-						if (req.query.debug == 'list')
+						if (isOnlyDisplayList)
 						{
 							res.json(files);
 							return;
