@@ -1,0 +1,19 @@
+<!Doctype html>
+<html>
+<head>
+	<title>dbcombo pk seajs combo</title>
+	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+</head>
+<body>
+<div>Result: </div>
+<div id="msg"></div>
+</body>
+<script src='../dist/benchmark4browser.js'></script>
+<script>
+var msgNode = document.getElementById('msg');
+runBenchmarkHandler(10, function(msg)
+{
+	msgNode.innerHTML +=  '<br />' + msg;
+});
+</script>
+</html>
