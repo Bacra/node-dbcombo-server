@@ -11,6 +11,9 @@
 <script src='../dist/benchmark4browser.js'></script>
 <script>
 var msgNode = document.getElementById('msg');
+// fix benchmark
+var define = {amd: {}};
+
 runBenchmarkHandler(10, function(msg)
 {
 	msgNode.innerHTML +=  '<br />' + msg;
