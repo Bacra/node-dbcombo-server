@@ -8,12 +8,34 @@ npm install dbcombo --save
 
 # Useage
 
-Linker config file:
+Server in NodeJS
 ```
 var DBCombo = require('dbcombo');
 var expr = require('express');
 expr().use(DBCombo({root: __dirname}));
 ```
+
+Browser for Seajs
+```
+<script src="node_modules/dbcombo/dist/seajs-dbcombo.js"></script>
+```
+
+Seajs Config
+```
+seajs.config(
+{
+	DBComboFileIndex: {},		// uri => index
+	DBComboFile: 'http://www.example.com/db.js',		// dbfile uri
+	DBComboExcludes: function(uri){return false}		// RegExp / Function
+});
+```
+
+combo uri exapmle
+
+```
+http://www.example.com/db.js/Yg0W21X/W35X/W35X/W35X/W35X.js
+```
+
 
 # Options
 
