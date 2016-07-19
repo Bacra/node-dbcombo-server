@@ -1,6 +1,6 @@
 {
   "name": "dbcombo",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Combo staitc resource width db info.",
   "main": "express.js",
   "keywords": [
