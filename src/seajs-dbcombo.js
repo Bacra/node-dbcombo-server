@@ -11,6 +11,8 @@ seajs.on('load', setComboHash);
 seajs.on('fetch', setRequestUri);
 seajs.on('config', setConfig);
 
+seajs.DBComboKey = ClientKey.key;
+
 
 var urlClearReg = /\?.*$/;
 function DBComboIndexHandlerDefault(uri)
@@ -35,8 +37,6 @@ function setConfig(options)
 function setComboHash(uris)
 {
 	var len = uris.length;
-	if (len < 2) return;
-
 	var needComboUris = []
 
 	for (var i = 0; i < len; i++)
@@ -65,11 +65,18 @@ function setRequestUri(data2)
 	if (data.DBComboFile)
 	{
 		var info = DBComboIndexData[data2.uri];
-		if (info)
+		if (info && info.indexs)
 		{
-			data2.requestUri = info.requestUri || data.DBComboFile+'/'+info.indexStr+info.type;
+			// 下发index，其他fetch的可能也要用
+			data2.DBComboFileInfo = info;
+			if (info.indexs.length > 1)
+			{
+				data2.requestUri = info.requestUri || data.DBComboFile+'/'+info.indexStr+info.type;
+				return;
+			}
 		}
-		else if (data.DBComboExcludeUriHandler)
+
+		if (data.DBComboExcludeUriHandler)
 		{
 			data2.requestUri = data.DBComboExcludeUriHandler(data2.uri);
 		}
@@ -105,7 +112,7 @@ function setHash(files)
 
 	if (inList.length)
 	{
-		var result = {indexs: indexs, indexStr: ClientKey.key(indexs), type: getExt(inList[0])};
+		var result = {indexs: indexs, indexStr: seajs.DBComboKey(indexs), type: getExt(inList[0])};
 		for (var i = inList.length; i--;)
 		{
 			DBComboIndexData[inList[i]] = result;
