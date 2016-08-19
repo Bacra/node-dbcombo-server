@@ -1,6 +1,6 @@
 {
   "name": "dbcombo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Combo staitc resource width db info.",
   "main": "express.js",
   "keywords": [
@@ -11,7 +11,8 @@
     "staitc"
   ],
   "scripts": {
-    "test": "node_modules/.bin/mocha test/test_*.js"
+    "test": "node_modules/.bin/mocha test/test_*.js",
+    "prepublish": "webpack"
   },
   "author": "bacrawu <bacra.woo@gmail.com>",
   "repository": {
