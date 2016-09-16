@@ -1,2 +1,4 @@
 node_modules
 test/tmp
+coverage
+npm-debug.log
