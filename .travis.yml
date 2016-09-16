@@ -1,9 +1,11 @@
 os:
   - linux
+  - mac
 
 language: node_js
 node_js:
   - "0.12"
+  - "lts"
   - "stable"
   - "unstable"
 

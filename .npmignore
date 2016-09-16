@@ -1,10 +1,15 @@
 node_modules
 npm-debug.log
 
-.npmignore
-.travis.yml
 .gitignore
+.travis.yml
+.gitattributes
+.eslintrc
+.editorconfig
+.npmignore
+appveyor.yml
 
 test
+coverage
 
 webpack.config.js
