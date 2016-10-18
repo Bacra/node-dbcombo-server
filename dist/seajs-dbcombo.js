@@ -243,11 +243,10 @@
 		{
 			var i = EACH_GROUP_FILE_NUM;
 			var arr = [];
-			do
+			while(i--)
 			{
-				arr[i-1] = Math.pow(2, i) - Math.pow(2, i-1);
+				arr[i] = 1 << i;
 			}
-			while(--i);
 
 			return arr;
 		})();
@@ -330,7 +329,6 @@
 
 		return str;
 	}
-
 
 
 /***/ }
