@@ -272,7 +272,7 @@
 	    var doc = isHostType(context, 'document') && context.document;
 
 	    /** Used to access Wade Simmons' Node.js `microtime` module. */
-	    var microtimeObject = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"microtime\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	    var microtimeObject;
 
 	    /** Used to access Node.js's high resolution timer. */
 	    var processObject = isHostType(context, 'process') && context.process;

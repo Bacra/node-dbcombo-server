@@ -5,11 +5,11 @@ module.exports =
 		modulesDirectories: [__dirname+'/node_modules']
 	},
 	entry: {
-		'seajs-dbcombo': './src/seajs-dbcombo.js',
+		'seajs-dbcombo': './browser/src/seajs-dbcombo.js',
 		'benchmark4browser': './benchmark/benchmark.js'
 	},
 	output: {
-		path: 'dist',
+		path: 'browser/dist',
 		filename: '[name].js'
 	}
 };

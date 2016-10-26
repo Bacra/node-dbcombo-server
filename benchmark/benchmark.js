@@ -1,6 +1,6 @@
 var Benchmark = require('benchmark');
 var suite = new Benchmark.Suite;
-var ClientKey = require('../src/dbfile_client');
+var ClientKey = require('../browser/src/dbfile_client');
 var seajsCombo = require('./seajs-combo-sethash');
 
 var list21 = [12, 33];

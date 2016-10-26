@@ -1,9 +1,9 @@
 // require('debug').enable('*');
 
-var assert = require('assert');
-var DBFile = require('../lib/dbfile').DBFile;
-var ClientKey = require('../src/dbfile_client');
-var toLinuxPath = require('../lib/utils').toLinuxPath;
+var assert		= require('assert');
+var DBFile		= require('../lib/dbfile').DBFile;
+var ClientKey	= require('../browser/src/dbfile_client');
+var toLinuxPath	= require('../lib/utils').toLinuxPath;
 
 describe('dbfile', function()
 {
