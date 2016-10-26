@@ -46,8 +46,8 @@
 
 	var Benchmark = __webpack_require__(1);
 	var suite = new Benchmark.Suite;
-	var ClientKey = __webpack_require__(11);
-	var seajsCombo = __webpack_require__(12);
+	var ClientKey = __webpack_require__(12);
+	var seajsCombo = __webpack_require__(13);
 
 	var list21 = [12, 33];
 	var list22 = ['js/mail/seajs/combo.js', 'js/mail/list/listhandler.js'];
@@ -272,7 +272,7 @@
 	    var doc = isHostType(context, 'document') && context.document;
 
 	    /** Used to access Wade Simmons' Node.js `microtime` module. */
-	    var microtimeObject;
+	    var microtimeObject = __webpack_require__(5);
 
 	    /** Used to access Node.js's high resolution timer. */
 	    var processObject = isHostType(context, 'process') && context.process;
@@ -612,7 +612,7 @@
 	      // Lazy define.
 	      createFunction = function(args, body) {
 	        var result,
-	            anchor = __webpack_require__(3) ? __webpack_require__(5) : Benchmark,
+	            anchor = __webpack_require__(3) ? __webpack_require__(6) : Benchmark,
 	            prop = uid + 'createFunction';
 
 	        runScript((__webpack_require__(3) ? 'define.amd.' : 'Benchmark.') + prop + '=function(' + args + '){' + body + '}');
@@ -747,7 +747,7 @@
 	     */
 	    function require(id) {
 	      try {
-	        var result = freeExports && __webpack_require__(6)(id);
+	        var result = freeExports && __webpack_require__(7)(id);
 	      } catch(e) {}
 	      return result || null;
 	    }
@@ -759,7 +759,7 @@
 	     * @param {string} code The code to run.
 	     */
 	    function runScript(code) {
-	      var anchor = __webpack_require__(3) ? __webpack_require__(5) : Benchmark,
+	      var anchor = __webpack_require__(3) ? __webpack_require__(6) : Benchmark,
 	          script = doc.createElement('script'),
 	          sibling = doc.getElementsByTagName('script')[0],
 	          parent = sibling.parentNode,
@@ -2885,7 +2885,7 @@
 	  // Some AMD build optimizers, like r.js, check for condition patterns like the following:
 	  if (true) {
 	    // Define as an anonymous module so, through path mapping, it can be aliased.
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(4), __webpack_require__(10)], __WEBPACK_AMD_DEFINE_RESULT__ = function(_, platform) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(4), __webpack_require__(11)], __WEBPACK_AMD_DEFINE_RESULT__ = function(_, platform) {
 	      return runInContext({
 	        '_': _,
 	        'platform': platform
@@ -19929,12 +19929,18 @@
 /* 5 */
 /***/ function(module, exports) {
 
+	module.exports = null;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
@@ -19952,14 +19958,14 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 6;
+	webpackContext.id = 7;
 
 
 /***/ },
-/* 7 */,
 /* 8 */,
 /* 9 */,
-/* 10 */
+/* 10 */,
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*!
@@ -21101,7 +21107,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module), (function() { return this; }())))
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	var EACH_GROUP_FILE_NUM = exports.EACH_GROUP_FILE_NUM = 31;
@@ -21206,7 +21212,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = function(needComboUris)
