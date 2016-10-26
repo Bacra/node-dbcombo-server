@@ -15,6 +15,7 @@
     "prepublish": "webpack",
     "test-cov": "istanbul cover ./node_modules/.bin/_mocha -- test/test_* --reporter dot",
     "test-e2e": "karma start",
+    "test-sauce": "karma start karma.conf.sauce.js",
     "test-travis": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- test/test_* --reporter dot"
   },
   "author": "bacrawu <bacra.woo@gmail.com>",
@@ -52,6 +53,7 @@
     "karma-ie-launcher": "^1.0.0",
     "karma-mocha": "^1.2.0",
     "karma-safari-launcher": "^1.0.0",
+    "karma-sauce-launcher": "^1.1.0",
     "mocha": "^3.1.2",
     "request": "^2.72.0",
     "watchify": "^3.7.0",
