@@ -2,7 +2,7 @@
 
 var assert		= require('assert');
 var DBFile		= require('../lib/dbfile').DBFile;
-var ClientKey	= require('../browser/src/dbfile_client');
+var ClientKey	= require('dbcombo-client');
 var toLinuxPath	= require('../lib/utils').toLinuxPath;
 
 describe('dbfile', function()

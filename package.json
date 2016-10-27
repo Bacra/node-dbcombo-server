@@ -12,10 +12,8 @@
   ],
   "scripts": {
     "test": "cross-env DEBUG=dbcombo* mocha test/test_*.js",
-    "prepublish": "webpack",
+    "prepublish": "npm ls",
     "test-cov": "istanbul cover ./node_modules/.bin/_mocha -- test/test_* --reporter dot",
-    "test-e2e": "karma start",
-    "test-sauce": "karma start karma.conf.sauce.js",
     "test-travis": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- test/test_* --reporter dot"
   },
   "author": "bacrawu <bacra.woo@gmail.com>",
@@ -30,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.1.1",
-    "benchmark": "^2.1.1",
+    "dbcombo-client": "^1.0.0",
     "debug": "^2.2.0",
     "etag": "^1.7.0",
     "extend": "^3.0.0",
@@ -41,22 +39,10 @@
     "request": "^2.75.0"
   },
   "devDependencies": {
-    "benchmark": "^2.1.0",
-    "browserify": "^13.1.1",
     "cross-env": "^2.0.0",
     "express": "^4.13.3",
     "istanbul": "^0.4.5",
-    "karma": "^1.3.0",
-    "karma-browserify": "^5.1.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-firefox-launcher": "^1.0.0",
-    "karma-ie-launcher": "^1.0.0",
-    "karma-mocha": "^1.2.0",
-    "karma-safari-launcher": "^1.0.0",
-    "karma-sauce-launcher": "^1.1.0",
     "mocha": "^3.1.2",
-    "request": "^2.72.0",
-    "watchify": "^3.7.0",
-    "webpack": "^1.13.1"
+    "request": "^2.72.0"
   }
 }
