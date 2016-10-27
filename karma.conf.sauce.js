@@ -38,6 +38,7 @@ module.exports = function(config)
 
 	config.set(extend(baseConfig,
 	{
+		port: 4443,
 		sauceLabs:
 		{
 			'public'			: 'public',
