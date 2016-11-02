@@ -3,6 +3,7 @@
 var assert		= require('assert');
 var DBFile		= require('../lib/dbfile').DBFile;
 var ClientKey	= require('dbcombo-client');
+var ClientDef	= require('dbcombo-client/lib/def');
 var toLinuxPath	= require('../lib/utils').toLinuxPath;
 
 describe('dbfile', function()
@@ -75,7 +76,7 @@ describe('dbfile', function()
 		return db.parseFileArray('Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1/Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1/Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1Y1')
 			.then(function(data)
 			{
-				assert.equal(data.length, ClientKey.MAX_GROUP_URI * 3);
+				assert.equal(data.length, ClientDef.MAX_GROUP_URI * 3);
 			});
 	});
 });
@@ -148,7 +149,7 @@ function assertClientKey(use)
 	it('clearkey#'+use.join(), function()
 	{
 		var db = new DBFile();
-		return db.handle(__dirname, '/data/db.js', ClientKey.key(use))
+		return db.handle(__dirname, '/data/db.js', ClientKey.stringify(use))
 			.then(function(files)
 			{
 				files.forEach(function(file, index)
