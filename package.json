@@ -1,6 +1,6 @@
 {
   "name": "dbcombo",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Combo staitc resource width db info.",
   "main": "express.js",
   "keywords": [
@@ -28,8 +28,8 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.1.1",
-    "dbcombo-client": "^1.1.0",
-    "debug": "^2.2.0",
+    "dbcombo-client": "^1.2.2",
+    "debug": "^2.3.0",
     "etag": "^1.7.0",
     "extend": "^3.0.0",
     "lru-cache": "^4.0.1",
@@ -43,6 +43,6 @@
     "express": "^4.13.3",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
-    "request": "^2.72.0"
+    "request": "^2.78.0"
   }
 }

@@ -16,7 +16,7 @@ describe('UrlComboParser', function()
 	it('DBFiles', function()
 	{
 		var parser = new urlCombo.DBFiles();
-		var info = parser.parse('/static/js/db.js/efe20er24.js');
+		var info = parser.parse('/static/js/db.js_db/efe20er24.js');
 		assert.equal(info.db.replace(/\\/g, '/'), '/static/js/db.js');
 		assert.equal(info.list, 'efe20er24');
 	});
