@@ -116,7 +116,7 @@ function assertRequestList(uri, list)
 	{
 		return new Promise(function(resolve, reject)
 			{
-				var url = HOST+uri+'/debug_list';
+				var url = HOST+uri+'$debug_list';
 				debug('request url:%s', url);
 
 				request.get(url, function(err, response, body)
