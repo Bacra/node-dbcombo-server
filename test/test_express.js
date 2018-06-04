@@ -35,17 +35,17 @@ describe('expressHandler', function()
 	});
 
 	var list = {
-		'file/db.js/3.js':
+		'file/db.js_db/3/V.js':
 			{
 				content: '0',
 				list: ['/file/0.js']
 			},
-		'file/db.js/3.js':
+		'file/db.js_db/3/V.js':
 			{
 				content: '01',
 				list: ['/file/0.js', '/file/1.js']
 			},
-		'file/db.js/12.js':
+		'file/db.js_db/12/V.js':
 			{
 				content: '15',
 				list: ['/file/1.js', '/file/5.js']
@@ -77,8 +77,8 @@ describe('expressHandler', function()
 	var list2 = {
 		'file/db.js': 404,
 		'file/1.js': 404,
-		'file/db.js/404.js': 404,
-		'data/db.js/404.js': 500,
+		'file/db.js_db/404/V.js': 404,
+		'data/db.js_db/404/V.js': 500,
 		'file/??404.js': 500,
 		'file/??1.js,2.css': 500
 	};
@@ -116,7 +116,7 @@ function assertRequestList(uri, list)
 	{
 		return new Promise(function(resolve, reject)
 			{
-				var url = HOST+uri+'/debug_list';
+				var url = HOST+uri+'$debug_list';
 				debug('request url:%s', url);
 
 				request.get(url, function(err, response, body)

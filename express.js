@@ -64,7 +64,7 @@ function handle(options)
 
 		// 使用路径进行debug参数设置，防止cdn回源的时候，被缓存
 		var isOnlyDisplayList = false;
-		if (url.substr(-11) == '/debug_list')
+		if (url.substr(-11) == '$debug_list')
 		{
 			isOnlyDisplayList = true;
 			url = url.substr(0, url.length-11);
