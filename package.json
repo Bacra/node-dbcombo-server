@@ -13,8 +13,8 @@
   "scripts": {
     "test": "cross-env DEBUG=dbcombo* mocha test/test_*.js",
     "prepublish": "npm ls",
-    "test-cov": "istanbul cover ./node_modules/.bin/_mocha -- test/test_* --reporter dot",
-    "test-travis": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- test/test_* --reporter dot"
+    "test-cov": "istanbul cover _mocha -- test/test_* --reporter dot",
+    "test-travis": "istanbul cover _mocha --report lcovonly -- test/test_* --reporter dot"
   },
   "author": "bacrawu <bacra.woo@gmail.com>",
   "repository": {
