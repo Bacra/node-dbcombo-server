@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var etag		= require('etag');
 var mime		= require('mime');
