@@ -1,3 +1,5 @@
+'use strict'
+
 var etag		= require('etag');
 var mime		= require('mime');
 var Checker		= require('./lib/check_paths').Checker;
@@ -193,5 +195,3 @@ function setResHeader(req, res, stats, options)
 		}
 	}
 }
-
-

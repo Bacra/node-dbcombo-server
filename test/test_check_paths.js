@@ -1,4 +1,4 @@
-// require('debug').enable('*');
+'use strict';
 
 var assert = require('assert');
 var Checker = require('../lib/check_paths').Checker;

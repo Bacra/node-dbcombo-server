@@ -1,3 +1,4 @@
+'use strict';
 // require('debug').enable('*');
 
 var assert		= require('assert');

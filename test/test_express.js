@@ -1,3 +1,5 @@
+'use strict';
+
 var assert	= require('assert');
 var handler	= require('../express');
 var expr	= require('express');
@@ -34,12 +36,8 @@ describe('expressHandler', function()
 		svr.close();
 	});
 
-	var list = {
-		'file/db.js_db/3/V.js':
-			{
-				content: '0',
-				list: ['/file/0.js']
-			},
+	var list =
+	{
 		'file/db.js_db/3/V.js':
 			{
 				content: '01',
@@ -153,4 +151,3 @@ function assertRequestStatusCode(uri, statusCode)
 			});
 	});
 }
-

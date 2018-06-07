@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require('assert');
 var LRU = require('lru-cache');
 var combo = require('../lib/combo');
@@ -70,4 +72,3 @@ describe('dbcombo', function()
 			.on('error', done);
 	});
 });
-

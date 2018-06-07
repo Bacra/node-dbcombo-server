@@ -1,4 +1,4 @@
-// require('debug').enable('*');
+'use strict';
 
 var assert = require('assert');
 var FileReader = require('../lib/file_reader');

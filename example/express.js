@@ -1,3 +1,5 @@
+'use strict';
+
 require('debug').enable('dbcombo*');
 
 var expr = require('express');

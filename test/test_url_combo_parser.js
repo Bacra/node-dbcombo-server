@@ -1,4 +1,4 @@
-// require('debug').enable('*');
+'use strict';
 
 var assert = require('assert');
 var urlCombo = require('../lib/url_combo_parser');
