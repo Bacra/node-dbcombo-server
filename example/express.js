@@ -8,11 +8,11 @@ var combo = require('../express');
 var PORT = 8782;
 
 app.use(combo(
-	{
-		root: __dirname+'/../test/file/',
-		enabledDBParser: true,
-		enabledMultiParser: true
-	}));
+{
+	root: __dirname+'/../test/file/',
+	enabledDBParser: true,
+	enabledMultiParser: true
+}));
 app.listen(PORT);
 
 console.log('listen:'+PORT);

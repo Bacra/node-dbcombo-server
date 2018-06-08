@@ -1,3 +1,5 @@
+/* global describe it */
+
 'use strict';
 // require('debug').enable('*');
 

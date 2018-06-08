@@ -1,3 +1,5 @@
+/* global describe it */
+
 'use strict';
 
 var assert = require('assert');
@@ -33,14 +35,14 @@ describe('chekPaths', function()
 				});
 
 			// 开启
-			var checker = new Checker({enableMulitExtname: true});
+			var checker2 = new Checker({enableMulitExtname: true});
 			assert.doesNotThrow(function()
 				{
-					checker.check(['file1.js', 'file2.js']);
+					checker2.check(['file1.js', 'file2.js']);
 				});
 			assert.doesNotThrow(function()
 				{
-					checker.check(['file1.js', 'file2.css']);
+					checker2.check(['file1.js', 'file2.css']);
 				});
 		});
 

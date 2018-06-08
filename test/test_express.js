@@ -1,5 +1,9 @@
+/* global describe it before after */
+
 'use strict';
 
+var _		= require('lodash');
+var Promise	= require('bluebird');
 var assert	= require('assert');
 var handler	= require('../express');
 var expr	= require('express');
@@ -58,21 +62,18 @@ describe('expressHandler', function()
 			},
 	};
 
-	for(var uri in list)
+	_.each(list, function(data, uri)
 	{
-		assertRequestBody(uri, list[uri].content);
-	}
+		assertRequestBody(uri, data.content);
+	});
 
-	for(var uri in list)
+	_.each(list, function(data, uri)
 	{
-		if (list[uri].list)
-		{
-			assertRequestList(uri, list[uri].list);
-		}
-	}
+		if (data.list) assertRequestList(uri, data.list);
+	});
 
-
-	var list2 = {
+	var list2 =
+	{
 		'file/db.js': 404,
 		'file/1.js': 404,
 		'file/db.js_db/404/V.js': 404,
@@ -81,10 +82,10 @@ describe('expressHandler', function()
 		'file/??1.js,2.css': 500
 	};
 
-	for(var uri in list2)
+	_.each(list2, function(statusCode, uri)
 	{
-		assertRequestStatusCode(uri, list2[uri]);
-	}
+		assertRequestStatusCode(uri, statusCode);
+	});
 });
 
 
@@ -142,7 +143,7 @@ function assertRequestStatusCode(uri, statusCode)
 				var url = HOST+uri;
 				debug('request url:%s', url);
 
-				request.get(url, function(err, response, body)
+				request.get(url, function(err, response)
 				{
 					if (err) return reject(err);
 					assert.equal(response.statusCode, statusCode);

@@ -67,7 +67,6 @@ Use by Seajs plugin, See [DBComboClient](https://github.com/Bacra/node-dbcombo-c
 `fileStatCache`
 `fileCache`
 `separator`
-`eachFileLimit`
 `maxCacheFileSize`
 `preReadFileIndex`
 

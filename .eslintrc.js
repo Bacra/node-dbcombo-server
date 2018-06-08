@@ -1,5 +1,9 @@
+module.exports =
 {
-	"env": {
-		"node": true
-	}
+	env: {node: true},
+	extends: 'eslint:recommended',
+	rules:
+	{
+		'no-console': 'off',
+	},
 }

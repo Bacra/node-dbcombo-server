@@ -1,5 +1,6 @@
 'use strict';
 
+var Promise		= require('bluebird');
 var etag		= require('etag');
 var mime		= require('mime');
 var Checker		= require('./lib/check_paths').Checker;
@@ -26,9 +27,10 @@ function handle(options)
 
 	function paseMulti(url)
 	{
-		return new Promise(function(resolve)
+		return Promise.resolve()
+			.then(function()
 			{
-				resolve(multiParser.parse(url));
+				return multiParser.parse(url);
 			})
 			.catch(function(err)
 			{
@@ -39,9 +41,10 @@ function handle(options)
 
 	function paseDB(url)
 	{
-		return new Promise(function(resolve)
+		return Promise.resolve()
+			.then(function()
 			{
-				resolve(dbParser.parse(url));
+				return dbParser.parse(url);
 			})
 			.then(function(fileinfo)
 			{
@@ -101,12 +104,12 @@ function handle(options)
 
 				if (!files && !files.length) return next();
 
-				return new Promise(function(resolve)
+				return Promise.resolve()
+					.then(function()
 					{
 						debug('check files:%o', files);
 						checker.check(files);
 						req.__combo_files__ = files;
-						resolve();
 					})
 					.then(function()
 					{

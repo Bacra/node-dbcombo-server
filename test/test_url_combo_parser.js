@@ -1,3 +1,5 @@
+/* global describe it */
+
 'use strict';
 
 var assert = require('assert');
@@ -23,8 +25,8 @@ describe('UrlComboParser', function()
 		assert.equal(info.list, 'efe20er24');
 
 		// 旧url
-		var info = parser.parse('/static/js/db.js_db/efe20er24.js');
-		assert.equal(info.db.replace(/\\/g, '/'), '/static/js/db.js');
-		assert.equal(info.list, 'efe20er24');
+		var info2 = parser.parse('/static/js/db.js_db/efe20er24.js');
+		assert.equal(info2.db.replace(/\\/g, '/'), '/static/js/db.js');
+		assert.equal(info2.list, 'efe20er24');
 	});
 });
