@@ -1,15 +1,16 @@
 node_modules
 npm-debug.log
+package-lock.json
 
 .gitignore
 .travis.yml
 .gitattributes
-.eslintrc
+.eslintrc.js
+.eslintignore
 .editorconfig
 .npmignore
-appveyor.yml
+.tags*
+.DS_Store
 
 test
 coverage
-
-webpack.config.js
