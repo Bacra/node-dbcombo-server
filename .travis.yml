@@ -4,12 +4,12 @@ os:
 language: node_js
 
 node_js:
-  - '0.12'
   - lts/*
   - stable
 
 script:
-  - npm run-script test-travis
+  - npm run lint
+  - npm run test-travis
 
 after_script:
   - npm install coveralls@2 && cat ./coverage/lcov.info | coveralls
